@@ -1065,7 +1065,7 @@ ViewCellComponent.decorators = [
                 changeDetection: ChangeDetectionStrategy.OnPush,
                 template: `
     <div  [ngSwitch]="cell.getColumn().type" class="cell-view" 
-          [ngClass]="[cell.getColumn().class, 'cell-'+cell.getColumn().id]">
+          [ngClass]="[cell.getColumn().class || '', 'cell-'+cell.getColumn().id]">
         <custom-view-component *ngSwitchCase="'custom'" [cell]="cell"></custom-view-component>
         <div *ngSwitchCase="'html'" [innerHTML]="cell.getValue()"></div>
         <div *ngSwitchDefault>{{ cell.getValue() }}</div>

@@ -632,7 +632,7 @@
         { type: core.Component, args: [{
                     selector: 'table-cell-view-mode',
                     changeDetection: core.ChangeDetectionStrategy.OnPush,
-                    template: "\n    <div  [ngSwitch]=\"cell.getColumn().type\" class=\"cell-view\" \n          [ngClass]=\"[cell.getColumn().class, 'cell-'+cell.getColumn().id]\">\n        <custom-view-component *ngSwitchCase=\"'custom'\" [cell]=\"cell\"></custom-view-component>\n        <div *ngSwitchCase=\"'html'\" [innerHTML]=\"cell.getValue()\"></div>\n        <div *ngSwitchDefault>{{ cell.getValue() }}</div>\n    </div>\n    "
+                    template: "\n    <div  [ngSwitch]=\"cell.getColumn().type\" class=\"cell-view\" \n          [ngClass]=\"[cell.getColumn().class || '', 'cell-'+cell.getColumn().id]\">\n        <custom-view-component *ngSwitchCase=\"'custom'\" [cell]=\"cell\"></custom-view-component>\n        <div *ngSwitchCase=\"'html'\" [innerHTML]=\"cell.getValue()\"></div>\n        <div *ngSwitchDefault>{{ cell.getValue() }}</div>\n    </div>\n    "
                 },] }
     ];
     ViewCellComponent.propDecorators = {
