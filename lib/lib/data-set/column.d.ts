@@ -4,6 +4,8 @@ export declare class Column {
     protected settings: any;
     protected dataSet: DataSet;
     title: string;
+    tooltip: string;
+    icon: string;
     type: string;
     class: string;
     width: string;

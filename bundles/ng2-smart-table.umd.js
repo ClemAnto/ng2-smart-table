@@ -1526,8 +1526,8 @@
     TitleComponent.decorators = [
         { type: core.Component, args: [{
                     selector: 'ng2-smart-table-title',
-                    template: "\n    <a href=\"#\" *ngIf=\"column.isSortable\"\n                (click)=\"_sort($event)\"\n                class=\"ng2-smart-sort-link sort\"\n                [ngClass]=\"currentDirection\">\n      {{ column.title }}\n    </a>\n    <span class=\"ng2-smart-sort\" *ngIf=\"!column.isSortable\">{{ column.title }}</span>\n  ",
-                    styles: ["a.sort.asc,a.sort.desc{font-weight:700}a.sort.asc:after,a.sort.desc:after{border:4px solid transparent;border-bottom-color:rgba(0,0,0,.3);content:\"\";display:inline-block;height:0;margin-bottom:2px;width:0}a.sort.desc:after{margin-bottom:-2px;transform:rotate(-180deg)}"]
+                    template: "\n    <a href=\"#\" *ngIf=\"column.isSortable\"\n                (click)=\"_sort($event)\"\n                class=\"ng2-smart-sort-link sort\"\n                [title]=\"column.tooltip\"\n                [ngClass]=\"currentDirection\">\n\n      <i *ngIf=\"column.icon\" class=\"icon fa fa-{{column.icon}}\"></i>\n      {{ column.title }}\n    </a>\n    <span class=\"ng2-smart-sort\" *ngIf=\"!column.isSortable\" [title]=\"column.tooltip\">\n      <i *ngIf=\"column.icon\" class=\"icon fa fa-{{column.icon}}\"></i>{{ column.title }}</span>\n  ",
+                    styles: ["a.sort.asc,a.sort.desc{font-weight:700}a.sort.asc:after,a.sort.desc:after{border:4px solid transparent;border-bottom-color:rgba(0,0,0,.3);content:\"\";display:inline-block;height:0;margin-bottom:2px;width:0}a.sort.desc:after{margin-bottom:-2px;transform:rotate(-180deg)}.icon{display:inline-flex;font-size:10px;margin-right:2px}"]
                 },] }
     ];
     TitleComponent.propDecorators = {
@@ -1842,6 +1842,8 @@
             this.settings = settings;
             this.dataSet = dataSet;
             this.title = '';
+            this.tooltip = '';
+            this.icon = '';
             this.type = '';
             this.class = '';
             this.width = '';
@@ -1880,6 +1882,8 @@
         };
         Column.prototype.process = function () {
             this.title = this.settings['title'];
+            this.icon = this.settings['icon'];
+            this.tooltip = this.settings['tooltip'];
             this.class = this.settings['class'];
             this.width = this.settings['width'];
             this.hide = !!this.settings['hide'];
