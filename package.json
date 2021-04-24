@@ -1,8 +1,8 @@
 {
   "name": "ng2-smart-table",
-  "version": "1.7.4",
-  "description": "Angular Smart Table PLUS",
-  "author": "akveo/clemanto",
+  "version": "1.7.5",
+  "description": "Angular Smart Table",
+  "author": "akveo",
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.10",
